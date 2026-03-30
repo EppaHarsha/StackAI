@@ -58,7 +58,7 @@ router.post("/chat",async(req,res)=>{
         const assistant = await openAiResponse(message);
         thread.messages.push({role:"assistant",content:assistant})
         thread.updatedAt = new Date();
-
+        
         await thread.save();
         res.json({reply:assistant});  
    }catch(err){

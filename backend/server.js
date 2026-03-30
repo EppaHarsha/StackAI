@@ -9,13 +9,12 @@ const port = 3000;
 app.use(express.json());
 app.use(cors());
 app.use("/api",chatRoutes)
-// app.post("/test",async(req,res)=>{
-//     console.log(req.body)   
-// })
-
+app.get("/test",(req,res)=>{
+    res.send("hello");
+})
 const connectDB = async()=>{
     try{
-        await mongoose.connect(process.env.MONGODB_URI)
+        await mongoose.connect(process.env.MONGODB_URL)
         console.log("Database is connected");
     }catch(err){
         console.log(err);
